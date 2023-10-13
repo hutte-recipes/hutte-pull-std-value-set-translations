@@ -1,0 +1,18 @@
+version: 1.0
+
+# Shell script to run when pushing the source code to the scratch orgs.
+# It's a great place to automate tasks like permission set assignments or data loading.
+push_script: |
+  sfdx --version
+  sfdx force:source:push -f --loglevel fatal 1>/dev/null
+
+custom_scripts:
+  # This scripts will be displayed on the scratch org's page
+  scratch_org:
+    'Pull Standard Value Set Translations':
+      description: "Import data using Snowfakery"
+      run: |
+        sf project retrieve start --metadata 'StandardValueSetTranslation:*' --target-org "${SALESFORCE_USERNAME}"
+        git add .
+        git commit -m "chore: standard value set translations"
+        git push
