@@ -29,6 +29,7 @@ custom_scripts:
         sf project retrieve start --metadata 'StandardValueSetTranslation:*' --target-org "${SALESFORCE_USERNAME}"
         git add .
         git commit -m "chore: standard value set translations"
+        git config --global push.autoSetupRemote true
         git push
 ```
 
@@ -39,5 +40,4 @@ custom_scripts:
 ### Step 2
 
 - Create a Scratch Org
-- Pull the main changes of your development (any other change than value set translations)
 - Use the `Pull Standard Value Set Translations` to pull and commit the standard value set translations
