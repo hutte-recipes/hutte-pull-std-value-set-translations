@@ -1,8 +1,8 @@
 # Hutte Recipe - Pull and Commit Standard value set translations
 
-In this example, the pull/retrieval of `Standard Value Set Translations` through the Salesforce CLI cannot be successfully achieved through commands which uses source tracking, more information can be seen in the [known issue](https://issues.salesforce.com/issue/a028c00000qQ0VAAA0/unable-to-retrieve-the-standardvaluesettranslation-values-using-cli). This limitation impacts Hutte's logic for pull changes of this metadata type.
+The pull/retrieval of `Standard Value Set Translations` through the Salesforce CLI cannot be successfully achieved through commands which use source tracking, details can be seen in the [known issue](https://issues.salesforce.com/issue/a028c00000qQ0VAAA0/unable-to-retrieve-the-standardvaluesettranslation-values-using-cli). This limitation impacts Hutte's logic for the pull changes operation of this metadata type.
 
-As a workaround, we can use Hutte custom buttons to automate this operation, by providing the custom logic for the pull and commit of this metadata type as a custom button in `hutte.yml` file.
+As a workaround, Hutte custom buttons can help to fix and automate this operation, by providing the custom logic for the pull and commit of this metadata type as a custom button in `hutte.yml` file.
 
 ![](./docs/example.jpg)
 
@@ -12,8 +12,6 @@ As a workaround, we can use Hutte custom buttons to automate this operation, by 
 - a `hutte.yml` file (e.g. the default one shown in the `CONFIGURATION` tab)
 
 ## Steps
-
-The following assumes that we use the `config` directory to store a configuration file for `sfdx-browserforce-plugin`.
 
 ### Step 1
 
@@ -34,8 +32,9 @@ custom_scripts:
         git push
 ```
 
-Note 1: If your project still uses `sfdx`, replace the `sf` command by `sfdx force:source:retrieve --metadata 'StandardValueSetTranslation:*' --targetusername "${SALESFORCE_USERNAME}"`
-Note 2: This custom button can also be added to sandboxes page in Hutte, for that, add the button to `sandbox` instead of `scratch_org`
+*Note 1: If your project still uses `sfdx`, replace the `sf` command by `sfdx force:source:retrieve --metadata 'StandardValueSetTranslation:*' --targetusername "${SALESFORCE_USERNAME}"`. In Hutte, the salesforce cli version is defined by the docker image used, which can be updated in the Project Settings menu.
+
+*Note 2: This custom button can also be added to sandboxes page in Hutte, for that, add the button to `sandbox` instead of `scratch_org`
 
 ### Step 2
 
