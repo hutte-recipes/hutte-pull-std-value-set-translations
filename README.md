@@ -24,7 +24,7 @@ custom_scripts:
   # This scripts will be displayed on the scratch org's page
   scratch_org:
     'Pull Standard Value Set Translations':
-      description: "Import data using Snowfakery"
+      description: "Move changes to Standard Picklist Values to Git"
       run: |
         sf project retrieve start --metadata 'StandardValueSetTranslation:*' --target-org "${SALESFORCE_USERNAME}"
         git add .
