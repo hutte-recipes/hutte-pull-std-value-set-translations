@@ -29,7 +29,6 @@ custom_scripts:
         sf project retrieve start --metadata 'StandardValueSetTranslation:*' --target-org "${SALESFORCE_USERNAME}"
         git add .
         git commit -m "chore: standard value set translations"
-        git config --global push.autoSetupRemote true
         git push
 ```
 
