@@ -11,9 +11,7 @@ As a workaround, Hutte custom buttons can help to fix and automate this operatio
 - a valid Sfdx Project
 - a `hutte.yml` file (e.g. the default one shown in the `CONFIGURATION` tab)
 
-## Steps
-
-### Step 1
+## Step 1: Add custom script
 
 - Edit the `hutte.yml` file in your default branch
 - Add the following lines to the `custom_scripts`
@@ -23,7 +21,7 @@ As a workaround, Hutte custom buttons can help to fix and automate this operatio
 custom_scripts:
   # This scripts will be displayed on the scratch org's page
   scratch_org:
-    'Pull Standard Value Set Translations':
+    "Pull Standard Value Set Translations":
       description: "Move changes to Standard Picklist Values to Git"
       run: |
         sf project retrieve start --metadata 'StandardValueSetTranslation:*' --target-org "${SALESFORCE_USERNAME}"
@@ -32,11 +30,11 @@ custom_scripts:
         git push
 ```
 
-*Note 1: If your project still uses `sfdx`, replace the `sf` command by `sfdx force:source:retrieve --metadata 'StandardValueSetTranslation:*' --targetusername "${SALESFORCE_USERNAME}"`. In Hutte, the salesforce cli version is defined by the docker image used, which can be updated in the Project Settings menu.
+_Note 1: If your project still uses `sfdx`, replace the `sf` command by `sfdx force:source:retrieve --metadata 'StandardValueSetTranslation:_' --targetusername "${SALESFORCE_USERNAME}"`. In Hutte, the salesforce cli version is defined by the docker image used, which can be updated in the Project Settings menu.
 
-*Note 2: This custom button can also be added to sandboxes page in Hutte, for that, add the button to `sandbox` instead of `scratch_org`
+\*Note 2: This custom button can also be added to sandboxes page in Hutte, for that, add the button to `sandbox` instead of `scratch_org`
 
-### Step 2
+## Step 2: Execute
 
 - Create a Scratch Org
-- Use the `Pull Standard Value Set Translations` to pull and commit the standard value set translations
+- Use the `Pull Standard Value Set Translations` custom button to pull and commit the standard value set translations
